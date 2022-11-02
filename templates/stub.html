@@ -1,18 +1,24 @@
-<!-- Extending the predefined project layout -->
-{% extends "layouts/base.html" %}
+<!-- Extending the project layout, as this file will do minor customizations -->
+{% extends "layouts/project.html" %}
 
 <!- This variable sets name of browser tab  -->
 {% set project = "Stubby" %}
 
-<!- This is a replacement block for Body in base.html -->
-{% block body %}
-    <!- Try building a new body here, bootstrap is a wise choice ->
-    <div class="px-5 py-5 mx-auto">
-        <h1 class="text-primary"><strong>Aaron Rubin</strong></h1>
-        <p class="text-secondary">yuh stub yuh my stub</p>
-    </div>
+<!-- Setting up a block replacement to customize background to RINGS -->
+{% block background %}
+<script src="{{ url_for('static', filename='js/three.r119.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/vanta.rings.min.js') }}"></script>
+<script>
+    VANTA.RINGS({
+        el: "body",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00
+    })
+</script>
 {% endblock %}
 
-<!- This is turning off birds background from base.html -->
-{% block background %}
-{% endblock %}
